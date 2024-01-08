@@ -2,8 +2,10 @@ package me.abeilles.base.dal;
 
 
 
+import me.abeilles.base.dal.models.Auteur;
 import me.abeilles.base.dal.models.User;
 import me.abeilles.base.dal.models.UserRole;
+import me.abeilles.base.dal.repositories.AuteurRepository;
 import me.abeilles.base.dal.repositories.UserRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,11 +18,13 @@ public class DataInit implements InitializingBean {
     
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AuteurRepository auteurRepository;
 
 
-    public DataInit(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public DataInit(UserRepository userRepository, PasswordEncoder passwordEncoder, AuteurRepository auteurRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.auteurRepository = auteurRepository;
     }
 
     @Override
@@ -69,6 +73,17 @@ public class DataInit implements InitializingBean {
         role4.add(UserRole.AUTHOR);
         user4.setEnabled(true);
         userRepository.save(user4);
+
+        Auteur auteur1 = new Auteur();
+        auteur1.setNom("TOTO");
+        auteur1.setPrenom("UN");
+        auteur1.setAuteurId("auteur1");
+        auteurRepository.save(auteur1);
+
+        Auteur auteur2 = new Auteur();
+        auteur2.setNom("TATA");
+        auteur2.setPrenom("tara");
+        auteur2.setAuteurId("auteur2");
     }
 
 

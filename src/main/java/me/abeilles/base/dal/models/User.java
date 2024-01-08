@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 @Entity
 @Table(name = "Utilisateurs")
 @Data
+
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
