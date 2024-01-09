@@ -84,6 +84,7 @@ public class DataInit implements InitializingBean {
         auteur2.setNom("TATA");
         auteur2.setPrenom("tara");
         auteur2.setAuteurId("auteur2");
+        auteurRepository.save(auteur2);
     }
 
 
